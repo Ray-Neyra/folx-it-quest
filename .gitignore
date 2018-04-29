@@ -1,0 +1,14 @@
+# IntelliJ Generated
+.idea
+*.iml
+
+# gradle
+.gradle/
+bin/
+build/
+out/
+log/
+
+
+# windows
+sh.*

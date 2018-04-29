@@ -1,0 +1,3 @@
+rootProject.name = 'folx-it-quest'
+include 'rest-service'
+include 'rest-client'
