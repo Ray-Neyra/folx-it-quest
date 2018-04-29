@@ -1,0 +1,47 @@
+databaseChangeLog:
+ - changeSet:
+    id: 1.0
+    author: Ray Neyra
+    changes:
+    - createSequence:
+        sequenceName: product_seq
+        incrementBy: 50
+    - createTable:
+        columns:
+        - column:
+            name: product_id
+            type: bigint
+            value: product_seq
+            constraints:
+              primaryKey: true
+        - column:
+            name: version
+            type: int
+            defaultValue: 0
+            constraints:
+              nullable: false
+        - column:
+            name: uuid
+            type: VARCHAR(36)
+            constraints:
+              nullable: false
+              unique: true
+        - column:
+            name: name
+            type: VARCHAR(255)
+            constraints:
+              nullable: false
+              unique: false
+        - column:
+            name: price
+            type: NUMERIC(19,2)
+            constraints:
+              nullable: false
+              unique: false
+        - column:
+            name: status
+            type: VARCHAR(64)
+            constraints:
+              nullable: false
+              unique: false
+        tableName: product

@@ -1,0 +1,23 @@
+internal:
+  db-schema: itquest
+
+spring:
+  application:
+    name: rest-service
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: ${internal.db-schema}
+    open-in-view: false
+
+liquibase:
+  enabled: true
+  default-schema: ${internal.db-schema}
+  change-log: classpath:db/changelog/db.changelog-master.yaml
+
+server:
+  port: ${port:8080}
