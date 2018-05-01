@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlinVersion = '1.2.31'
+        kotlinVersion = '1.2.41'
         springBootVersion = '1.5.12.RELEASE'
     }
     repositories {
@@ -52,6 +52,8 @@ allprojects {
         postgresql = '42.1.4'
         liquibase = '3.5.3'
         spockSpring = '1.1-groovy-2.4'
+        jacksonKotlinModule = '2.9.5'
+        mapstruct  = '1.2.0.Final'
     }
 
     repositories {
@@ -60,7 +62,6 @@ allprojects {
     }
 
     dependencies {
-        compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
         compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
         compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
     }

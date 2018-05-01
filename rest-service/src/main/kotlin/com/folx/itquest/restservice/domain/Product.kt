@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
-import javax.validation.constraints.NotNull
 
 @Entity
 @Table(name = "product")
@@ -29,13 +28,11 @@ class Product(
     @Column(name = "product_id")
     var id: Long = 0L,
 
-    @NotNull
+    @Column(unique = true)
     var name: String = "",
 
-    @NotNull
     var price: BigDecimal = BigDecimal.ZERO,
 
-    @NotNull
     @Enumerated(value = EnumType.STRING)
     var status: ProductStatus = ProductStatus.WITHDRAWN
 

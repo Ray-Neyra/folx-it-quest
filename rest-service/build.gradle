@@ -1,12 +1,22 @@
 apply plugin: 'org.springframework.boot'
 apply plugin: 'kotlin-jpa'
-apply plugin: "kotlin-allopen"
+apply plugin: 'kotlin-allopen'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'groovy'
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.liquibase:liquibase-core:${liquibase}"
     compile "org.postgresql:postgresql:${postgresql}"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:${jacksonKotlinModule}"
+    compile "org.mapstruct:mapstruct:${mapstruct}"
+    compile "org.mapstruct:mapstruct-jdk8:${mapstruct}"
+    kapt "org.mapstruct:mapstruct-processor:${mapstruct}"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "org.spockframework:spock-spring:${spockSpring}"
+    testCompile "org.spockframework:spock-core:${spockSpring}"
 }
 
 allOpen {
