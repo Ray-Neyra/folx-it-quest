@@ -6,6 +6,7 @@ import com.folx.itquest.restservice.protocol.ProductResponse
 import com.folx.itquest.restservice.protocol.ProductUpdateRequest
 import com.folx.itquest.restservice.service.ProductService
 import org.springframework.http.ResponseEntity
+import org.springframework.http.ResponseEntity.created
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -24,9 +25,9 @@ class ProductController(
 ) {
 
     @PostMapping
-    fun createProduct(@Valid @RequestBody createRequest: ProductCreateRequest): ResponseEntity<URI> {
-        return ResponseEntity.created(URI.create("/api/products/" +
-                productService.createProduct(createRequest))).build()
+    fun createProduct(@Valid @RequestBody createRequest: ProductCreateRequest): ResponseEntity<Long> {
+        val productId = productService.createProduct(createRequest)
+        return ResponseEntity.created(URI.create("/api/products/$productId")).body(productId)
     }
 
     @PutMapping("/{productId}")
@@ -46,5 +47,11 @@ class ProductController(
     fun getProduct(@PathVariable("productId") productId: Long): ResponseEntity<ProductResponse> {
         return ResponseEntity.ok(ProductToProductResponse.INSTANCE.convert(
                 productService.findById(productId)))
+    }
+
+    @GetMapping("/name/{productName}")
+    fun getProductNyName(@PathVariable("productName") productName: String): ResponseEntity<ProductResponse> {
+        return ResponseEntity.ok(ProductToProductResponse.INSTANCE.convert(
+                productService.findByName(productName)))
     }
 }

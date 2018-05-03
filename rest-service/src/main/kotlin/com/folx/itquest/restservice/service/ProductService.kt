@@ -41,6 +41,11 @@ class ProductService(
                 ?: throw ProductNotFoundException("Product with id: $productId not found")
     }
 
+    fun findByName(productName: String): Product {
+        return productRepository.findByName(productName)
+                ?: throw ProductNotFoundException("Product with name: $productName not found")
+    }
+
     fun verifyVersion(requestedVer: Int, entityVer: Int) {
         if (requestedVer != entityVer) {
             throw ProductConcurrentModificationException(

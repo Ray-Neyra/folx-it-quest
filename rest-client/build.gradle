@@ -1,1 +1,9 @@
+apply plugin: 'org.springframework.boot'
 
+bootRepackage {
+    enabled = false
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+}
